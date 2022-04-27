@@ -1,0 +1,19 @@
+[package]
+name = "nap"
+description = "A tool to sleep and then possibly execute a command."
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "3.1.12", features = ["derive"] }
+
+[target.'cfg(target_os = "windows")'.dependencies.windows]
+version = "0.36.0"
+features = [
+    "alloc",
+    "Win32_Foundation",
+    "Win32_UI_Shell",
+]
+
+[target.'cfg(not(target_os = "windows"))'.dependencies]
+shell-words = "1.1.0"
